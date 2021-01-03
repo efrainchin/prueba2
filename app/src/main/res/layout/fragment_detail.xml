@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="detailBeer"
+            type="com.efrain.pruebaalbo.model.DetailBeers" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@color/white"
+        tools:context=".ui.DetailFragment">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    loadImage="@{detailBeer != null ? detailBeer.imageUrl : null}"
+                    app:layout_constraintHeight_percent="0.3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tagline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@{detailBeer != null ? detailBeer.tagline : null}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_title"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/firstDate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image"
+                    tools:text="@string/tagline" />
+
+                <TextView
+                    android:id="@+id/firstDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    tools:text="@string/date"
+                    android:textSize="@dimen/size_subtitle"
+                    android:text="@{detailBeer != null ? detailBeer.firstBrewed : null}"
+                    android:fontFamily="@font/roboto"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tagline" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    tools:text="@string/description"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="@dimen/size_subtitle"
+                    android:text="@{detailBeer != null ? detailBeer.description : null}"
+                    app:layout_constraintEnd_toEndOf="@+id/firstDate"
+                    app:layout_constraintStart_toStartOf="@+id/tagline"
+                    app:layout_constraintTop_toBottomOf="@+id/tagline" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerFoodPairing"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    tools:itemCount="4"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_food_pairing"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/firstDate"
+                    app:layout_constraintStart_toStartOf="@+id/tagline"
+                    app:layout_constraintTop_toBottomOf="@+id/description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

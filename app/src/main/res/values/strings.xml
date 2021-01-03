@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PruebaAlbo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buzz">Buzz</string>
+    <string name="tagline">A Real Bitter Experience.</string>
+    <string name="description">A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.</string>
+    <string name="date">enero 2020</string>
+</resources>
